@@ -1,0 +1,441 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUNGU FX</title>
+
+<style>
+:root{
+--bg:#0B1020;
+--card:rgba(255,255,255,.08);
+--green:#00FF99;
+--white:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--white);
+overflow-x:hidden;
+}
+
+.candles{
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.05;
+background:
+repeating-linear-gradient(
+90deg,
+#00ff99 0px,
+#00ff99 6px,
+transparent 6px,
+transparent 45px
+);
+animation:moveCandles 12s linear infinite;
+}
+
+@keyframes moveCandles{
+from{transform:translateX(0);}
+to{transform:translateX(-150px);}
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(12px);
+z-index:999;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:var(--green);
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
+url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:70px;
+color:var(--green);
+}
+
+.hero p{
+margin:20px 0;
+font-size:22px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 30px;
+margin:10px;
+background:var(--green);
+color:black;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+section{
+padding:100px 8%;
+}
+
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+color:var(--green);
+}
+
+.glass{
+background:var(--card);
+backdrop-filter:blur(12px);
+border-radius:20px;
+padding:30px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+border-radius:18px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#111827;
+color:white;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:var(--green);
+font-weight:bold;
+cursor:pointer;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+footer{
+background:#050816;
+padding:40px;
+text-align:center;
+}
+
+footer a{
+color:var(--green);
+margin:0 10px;
+text-decoration:none;
+}
+
+@media(max-width:768px){
+.hero h1{
+font-size:45px;
+}
+nav ul{
+display:none;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="candles"></div>
+
+<nav>
+<div class="logo">BUNGU FX</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div>
+<h1>BUNGU FX</h1>
+<p>Forex Education • Trading Signals • Market Analysis</p>
+
+<a href="#dashboard" class="btn">Get Signals</a>
+<a href="#contact" class="btn">Contact Us</a>
+</div>
+</section>
+
+<section id="about">
+<h2 class="title">About BUNGU FX</h2>
+
+<div class="glass">
+<h3>History</h3>
+<p>BUNGU FX was created to help traders develop consistency, discipline and profitability in forex trading.</p>
+
+<br>
+
+<h3>Mission</h3>
+<p>To empower traders through quality education and market insights.</p>
+
+<br>
+
+<h3>Vision</h3>
+<p>To become one of Africa's leading forex trading communities.</p>
+
+<br>
+
+<h3>Why Choose Us?</h3>
+<p>Professional guidance, accurate analysis, quality mentorship and trader support.</p>
+</div>
+</section>
+
+<section id="services">
+
+<h2 class="title">Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Forex Education</h3>
+<p>Beginner to advanced trading lessons.</p>
+</div>
+
+<div class="card">
+<h3>Trading Signals</h3>
+<p>Professional market opportunities.</p>
+</div>
+
+<div class="card">
+<h3>Market Analysis</h3>
+<p>Daily technical and fundamental analysis.</p>
+</div>
+
+<div class="card">
+<h3>Mentorship</h3>
+<p>One-on-one trading support.</p>
+</div>
+
+</div>
+</section>
+
+<section id="dashboard">
+
+<h2 class="title">Signal Dashboard</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>EURUSD</h3>
+<p>BUY</p>
+</div>
+
+<div class="card">
+<h3>GBPUSD</h3>
+<p>BUY</p>
+</div>
+
+<div class="card">
+<h3>XAUUSD</h3>
+<p>SELL</p>
+</div>
+
+</div>
+
+<br>
+
+<div class="glass">
+<h3>Win Rate: 87%</h3>
+<p>Total Signals: 250</p>
+<p>Successful Trades: 218</p>
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">Testimonials</h2>
+
+<div class="glass">
+<p id="testimonial">
+"BUNGU FX changed my trading journey."
+</p>
+</div>
+
+</section>
+
+<section id="tools">
+
+<h2 class="title">Forex Tools</h2>
+
+<div class="glass">
+
+<h3>Profit Calculator</h3>
+
+<input type="number" id="lots" placeholder="Lots">
+<input type="number" id="pips" placeholder="Pips">
+
+<button onclick="profitCalc()">Calculate Profit</button>
+
+<p id="profitResult"></p>
+
+<hr style="margin:20px 0">
+
+<h3>Risk Calculator</h3>
+
+<input type="number" id="balance" placeholder="Account Balance">
+<input type="number" id="riskPercent" placeholder="Risk %">
+
+<button onclick="riskCalc()">Calculate Risk</button>
+
+<p id="riskResult"></p>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="title">Contact</h2>
+
+<div class="glass">
+
+<p><strong>WhatsApp:</strong> 0798033596</p>
+<p><strong>Email:</strong> info@bungufx.com</p>
+
+<br>
+
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+
+<textarea rows="5" placeholder="Message"></textarea>
+
+<button>Send Message</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+<a href="#">Instagram</a>
+<a href="#">Telegram</a>
+<a href="#">TikTok</a>
+<a href="#">YouTube</a>
+</p>
+
+<br>
+
+<p>© 2026 BUNGU FX. All Rights Reserved.</p>
+
+</footer>
+
+<a href="https://wa.me/255798033596" class="whatsapp">
+WhatsApp
+</a>
+
+<script>
+
+function profitCalc(){
+let lots=parseFloat(document.getElementById("lots").value)||0;
+let pips=parseFloat(document.getElementById("pips").value)||0;
+
+let profit=lots*pips*10;
+
+document.getElementById("profitResult").innerHTML=
+"Estimated Profit: $" + profit.toFixed(2);
+}
+
+function riskCalc(){
+let balance=parseFloat(document.getElementById("balance").value)||0;
+let risk=parseFloat(document.getElementById("riskPercent").value)||0;
+
+let amount=(balance*risk)/100;
+
+document.getElementById("riskResult").innerHTML=
+"Risk Amount: $" + amount.toFixed(2);
+}
+
+const testimonials=[
+'"BUNGU FX changed my trading journey."',
+'"Excellent mentorship and support."',
+'"Accurate analysis and useful education."'
+];
+
+let current=0;
+
+setInterval(()=>{
+current=(current+1)%testimonials.length;
+document.getElementById("testimonial").innerHTML=testimonials[current];
+},3000);
+
+</script>
+
+</body>
+</html>
+```
