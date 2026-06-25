@@ -370,15 +370,39 @@ display:none;
 
 <section id="contact">
 
-<h2 class="title">Contact</h2>
+<h2 <h2>Leave a Message</h2>
 
-<div class="glass">
+<input type="text" id="name" placeholder="Your Name"><br><br>
 
-<p><strong>WhatsApp:</strong> 0798033596</p>
-<<p>
-<strong>Email:</strong>
-<a href="mailto:emmanuethomas0909@gmail.com" style="color:#00FF99;text-decoration:none;">
-emmanuethomas0909@gmail.com
+<input type="email" id="email" placeholder="Your Email"><br><br>
+
+<textarea id="message" placeholder="Your Message"></textarea><br><br>
+
+<button onclick="addMessage()">Send</button>
+
+<h3>Messages</h3>
+<div id="messages"></div>
+
+<script>
+function addMessage() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
+
+  if(name && email && message){
+    document.getElementById("messages").innerHTML += `
+      <div style="border:1px solid #ccc;padding:10px;margin:10px 0;">
+        <strong>${name}</strong> (${email})<br>
+        ${message}
+      </div>
+    `;
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+  }
+}
+</script>
 </a>
 </p>
 <br>
