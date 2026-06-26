@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUNGU FX | Premium Forex Trading Academy</title>
     
-    <!-- Premium Fonts and Icons -->
+    <!-- Premium Google Fonts & Vector Icon Packs -->
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
 
     <style>
-        /* CORE MODERN THEME ARCHITECTURE */
+        /* CORE MODERN FINTECH THEME STRUCTURAL DESIGN */
         :root {
-            --bg-deep: #0a0d14;
-            --bg-surface: #121722;
-            --gold: #ffcc00;
-            --gold-glow: rgba(255, 204, 0, 0.2);
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --neon-green: #00ffcc;
+            --bg-base: #06080c;
+            --bg-card: #0b0f17;
+            --bg-input: #121824;
+            --accent-gold: #e5b842;
+            --gold-glow: rgba(229, 184, 66, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --neon-green: #10b981;
+            --border-color: rgba(255, 255, 255, 0.06);
         }
 
         * {
@@ -29,330 +31,317 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* HIGH CLASS LIVE ABSTRACT ANIMATED BACKGROUND GRID */
-        .premium-bg {
+        /* LIVE ABSTRACT TRADING GRID OVERLAY SYSTEM */
+        .grid-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 50% 50%, #161f33 0%, #0a0d14 100%);
+            background: radial-gradient(circle at 80% 20%, #111a2e 0%, #06080c 100%);
         }
 
-        .chart-grid-overlay {
+        .matrix-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.04;
+            opacity: 0.15;
             background-image: 
-                linear-gradient(to right, #ffffff 1px, transparent 1px),
-                linear-gradient(to bottom, #ffffff 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .glow-filter-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(229, 184, 66, 0.04) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 92%;
+            max-width: 1300px;
             margin: auto;
         }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER & NAVIGATION INTERFACE */
         header {
-            background-color: rgba(18, 23, 34, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            background-color: rgba(6, 8, 12, 0.75);
+            backdrop-filter: blur(20px);
+            padding: 22px 0;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .header-flex {
+        .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        .brand-logo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            color: var(--text-main);
+            letter-spacing: 1px;
         }
 
-        .logo span {
-            color: var(--gold);
-            text-shadow: 0 0 15px var(--gold-glow);
+        .brand-logo span {
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px var(--gold-glow);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
+            align-items: center;
         }
 
         nav ul li a {
-            color: var(--text-main);
+            color: var(--text-secondary);
             text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active-link {
+            color: var(--text-primary);
+        }
+
+        .btn-portal-toggle {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: 600;
-            font-size: 15px;
-            transition: 0.3s ease;
+            font-size: 13px;
+            transition: all 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: var(--gold);
+        .btn-portal-toggle:hover {
+            background: var(--accent-gold);
+            color: var(--bg-base);
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
-        /* HERO SECTION */
-        .hero {
-            padding: 100px 0 60px 0;
+        /* PUBLIC MARKETING STAGE VIEWS */
+        .public-marketing-zone {
+            display: block;
+        }
+
+        .hero-banner {
+            padding: 80px 0 40px 0;
             text-align: center;
-            position: relative;
         }
 
-        .hero-glow-point {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: var(--gold);
-            filter: blur(150px);
-            opacity: 0.12;
-            z-index: -1;
-        }
-
-        .hero h1 {
+        .hero-banner h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 54px;
-            line-height: 1.2;
-            margin-bottom: 25px;
-            background: linear-gradient(135deg, #ffffff 60%, #ffcc00 100%);
+            font-size: 56px;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 19px;
-            max-width: 750px;
+        .hero-banner p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
             margin: 0 auto 35px auto;
-            color: var(--text-muted);
         }
 
-        .btn {
-            background: linear-gradient(135deg, #ffcc00 0%, #e6b800 100%);
-            color: #000000;
-            padding: 15px 35px;
+        .cta-btn {
+            background: linear-gradient(135deg, #e5b842 0%, #c4962b 100%);
+            color: #000;
+            padding: 16px 36px;
             text-decoration: none;
             font-weight: 700;
             border-radius: 6px;
-            box-shadow: 0 4px 20px rgba(255, 204, 0, 0.3);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: inline-block;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 25px rgba(229, 184, 66, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(255, 204, 0, 0.5);
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(229, 184, 66, 0.4);
         }
 
-        /* LIVE ADVANCED FINANCIAL GRAPHIC (INTEGRATED CHART WIDGET) */
-        .live-chart-container {
-            margin: 40px auto 60px auto;
-            background: var(--bg-surface);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* INDUSTRIAL TRADING VIEW GRAPHIC CONTAINER */
+        .ticker-widget-frame {
+            margin: 50px auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            height: 450px;
+            padding: 16px;
+            height: 480px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
 
-        /* ACADEMY CARDS ARCHITECTURE */
-        .features-grid {
+        /* CORE VALUE CARDS */
+        .value-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 80px;
+            margin: 60px 0;
         }
 
-        .feature-card {
-            background: linear-gradient(145deg, #121722 0%, #171e2c 100%);
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             padding: 40px 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-            transition: 0.3s ease;
+            border-radius: 12px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.1);
+        .value-card:hover {
+            border-color: rgba(229, 184, 66, 0.4);
+            transform: translateY(-4px);
         }
 
-        .feature-card i {
-            font-size: 35px;
-            color: var(--gold);
-            margin-bottom: 20px;
+        .value-card .icon-box {
+            width: 48px;
+            height: 48px;
+            background: rgba(229, 184, 66, 0.08);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--accent-gold);
+            font-size: 20px;
         }
 
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
+        .value-card h3 {
             font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
         }
 
-        .feature-card p {
-            color: var(--text-muted);
+        .value-card p {
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
-        /* PROGRAMS GRID WITH HOVER RANGES */
-        .courses-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 38px;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            color: var(--gold);
-        }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .course-box {
-            background-color: var(--bg-surface);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .course-box.premium-tier {
-            border: 2px solid var(--gold);
-            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.15);
-        }
-
-        .badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gold);
-            color: #000;
-            font-weight: 700;
-            padding: 4px 15px;
-            font-size: 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .course-box h4 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .course-box p {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 25px;
-        }
-
-        .course-box .price {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--gold);
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        /* REGISTRATION & SECURE GATEWAY CHECKOUT */
-        .checkout-section {
-            background-color: var(--bg-surface);
-            border-top: 1px solid rgba(255,255,255,0.05);
+        /* ENROLLMENT & GATEWAY SECTIONS */
+        .enrollment-panel {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
             padding: 80px 0;
         }
 
-        .form-container {
-            max-width: 650px;
+        .form-scaffold {
+            max-width: 580px;
             margin: auto;
-            text-align: center;
         }
 
-        .form-container h2 {
+        .form-scaffold h2 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 34px;
-            margin-bottom: 15px;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 10px;
         }
 
-        .form-container p {
-            color: var(--text-muted);
+        .form-scaffold p {
+            color: var(--text-secondary);
+            text-align: center;
             margin-bottom: 35px;
         }
 
-        form input, form select {
+        .input-row {
             width: 100%;
             padding: 16px;
-            margin-bottom: 18px;
-            background-color: var(--bg-deep);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
             color: #fff;
             border-radius: 6px;
-            font-size: 16px;
-            transition: 0.3s;
+            font-size: 15px;
+            margin-bottom: 16px;
+            transition: border-color 0.3s;
         }
 
-        form input:focus, form select:focus {
-            border-color: var(--gold);
+        .input-row:focus {
+            border-color: var(--accent-gold);
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
         }
 
-        .payment-methods-logos {
-            background: var(--bg-deep);
-            border: 1px dashed rgba(255, 254, 254, 0.15);
-            padding: 15px;
+        .badge-strip {
+            background: var(--bg-base);
+            padding: 12px;
             border-radius: 6px;
-            margin-bottom: 25px;
             font-size: 13px;
             color: var(--neon-green);
             display: flex;
             justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            margin-bottom: 24px;
+            border: 1px dashed rgba(255,255,255,0.08);
         }
 
-        .status-box {
+        .notification-banner {
             padding: 15px;
             border-radius: 6px;
             margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            text-align: center;
+        }
+
+        .banner-loading { display: block; background: #261f0c; border: 1px solid var(--accent-gold); color: var(--accent-gold); }
+        .banner-complete { display: block; background: #0c261c; border: 1px solid var(--neon-green); color: var(--neon-green); }
+
+        .submit-trigger {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* STUDENT HUB SYSTEM DASHBOARD */
+        .student-portal-view {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .portal-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .portal-sidebar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            height: fit-content;
+        }
+
+        .profile-badge {
