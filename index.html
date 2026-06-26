@@ -3,476 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUNGU FX | Forex Trading Academy</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Clean and modern font from Google Fonts -->
+    <title>BUNGU FX | Premium Forex Trading Academy</title>
+    
+    <!-- Premium Fonts and Icons -->
     <link href="https://googleapis.com" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="https://cloudflare.com">
 
-    <!-- NAVIGATION HEADER -->
-    <header>
-        <div class="container header-flex">
-            <div class="logo">BUNGU <span>FX</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#contact">Join Academy</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1>Master the Forex Market with BUNGU FX</h1>
-            <p>Learn advanced Price Action strategies, institutional trading secrets, and professional risk management from elite mentors.</p>
-            <a href="#contact" class="btn">Start Learning Now</a>
-        </div>
-    </section>
-
-    <!-- KEY FEATURES SECTION -->
-    <section id="features" class="features container">
-        <div class="feature-card">
-            <h3>Elite Mentorship</h3>
-            <p>Get step-by-step guidance through interactive practical sessions until you achieve market consistency.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Pure Price Action</h3>
-            <p>Master clean chart reading without lagging indicators. Decode the market like major financial institutions.</p>
-        </div>
-        <div class="feature-card">
-            <h3>High-Accuracy Signals</h3>
-            <p>Our students gain exclusive access to daily, premium institutional market setups and setups tracking.</p>
-        </div>
-    </section>
-
-    <!-- ACADEMY COURSES SECTION -->
-    <section id="courses" class="courses container">
-        <h2 class="section-title">Our Training Programs</h2>
-        <div class="course-grid">
-            <div class="course-box">
-                <h4>Beginner Course</h4>
-                <p>Forex fundamentals, understanding pips, lot sizes, margins, and navigating MetaTrader 4 & 5.</p>
-                <span class="price">$50 / TSh 135,000</span>
-            </div>
-            <div class="course-box bg-gold">
-                <h4>Advanced Mentorship</h4>
-                <p>Liquidity concepts, institutional order blocks, market imbalances, and psychological mastery.</p>
-                <span class="price">$100 / TSh 270,000</span>
-            </div>
-            <div class="course-box">
-                <h4>VIP Signals + Mentorship</h4>
-                <p>Receive intensive personalized mentorship alongside full access to our VIP signal room for 3 months.</p>
-                <span class="price">$200 / TSh 540,000</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- REGISTRATION / CONTACT FORM -->
-    <section id="contact" class="contact-section">
-        <div class="container form-container">
-            <h2>Create Your Academy Account</h2>
-            <p>Fill out the application form below. The BUNGU FX support team will review and reach out immediately.</p>
-            <form action="#" method="POST">
-                <input type="text" placeholder="Your Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="tel" placeholder="Phone Number (WhatsApp)" required>
-                <select required>
-                    <option value="">Select Preferred Program</option>
-                    <option value="beginner">Beginner Course ($50)</option>
-                    <option value="advanced">Advanced Mentorship ($100)</option>
-                    <option value="vip">VIP Signals + Mentorship ($200)</option>
-                </select>
-                <button type="submit" class="btn btn-submit">Submit Application</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container text-center">
-            <p>&copy; 2026 BUNGU FX Academy. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>/* RESET & FOUNDATION */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #11141a;
-    color: #ffffff;
-    line-height: 1.6;
-}
-
-.container {
-    width: 85%;
-    margin: auto;
-    max-width: 1200px;
-}
-
-/* NAVBAR & LOGO */
-header {
-    background-color: #1a1f29;
-    padding: 20px 0;
-    border-bottom: 2px solid #ffcc00;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: #ffcc00;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #ffcc00;
-}
-
-/* HERO SECTION */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://unsplash.com') no-repeat center center/cover;
-    height: 75vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 45px;
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.hero-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #cccccc;
-}
-
-.btn {
-    background-color: #ffcc00;
-    color: #11141a;
-    padding: 12px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.btn:hover {
-    background-color: #e6b800;
-    transform: translateY(-3px);
-}
-
-/* CARDS ABOVE BACKGROUND */
-.features {
-    display: flex;
-    justify-content: space-between;
-    margin-top: -50px;
-    margin-bottom: 50px;
-    gap: 20px;
-}
-
-.feature-card {
-    background-color: #1a1f29;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    flex: 1;
-    border-top: 4px solid #ffcc00;
-    text-align: center;
-}
-
-.feature-card h3 {
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-
-/* COURSES GRID */
-.courses {
-    padding: 60px 0;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 32px;
-}
-
-.course-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.course-box {
-    background-color: #1a1f29;
-    padding: 30px;
-    border-radius: 8px;
-    flex: 1;
-    text-align: center;
-    border: 1px solid #2a313d;
-}
-
-.bg-gold {
-    border: 2px solid #ffcc00;
-}
-
-.course-box h4 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-
-.course-box .price {
-    display: block;
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #ffffff;
-}
-
-/* FORMS */
-.contact-section {
-    background-color: #1a1f29;
-    padding: 60px 0;
-}
-
-.form-container {
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-}
-
-.form-container h2 {
-    margin-bottom: 10px;
-    color: #ffcc00;
-}
-
-.form-container p {
-    margin-bottom: 30px;
-    color: #cccccc;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #11141a;
-    border: 1px solid #2a313d;
-    color: #ffffff;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-form input:focus, form select:focus {
-    border-color: #ffcc00;
-    outline: none;
-}
-
-.btn-submit {
-    width: 100%;
-    font-size: 18px;
-}
-
-/* FOOTER */
-footer {
-    background-color: #0b0d11;
-    padding: 25px 0;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #666;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* RESPONSIVE LAYOUT (SMARTPHONES) */
-@media (max-width: 768px) {
-    .header-flex, .features, .course-grid {
-        flex-direction: column;
-        text-align: center;
-    }
-    nav ul {
-        margin-top: 15px;
-        justify-content: center;
-    }
-    nav ul li {
-        margin: 0 10px;
-    }
-    .features {
-        margin-top: 20px;
-    }
-    .hero-content h1 {
-        font-size: 32px;
-    }
-}    <!-- REGISTRATION & INTEGRATED PAYMENT SECTION -->
-    <section id="contact" class="contact-section">
-        <div class="container form-container">
-            <h2>Create Your Account & Pay Securely</h2>
-            <p>Select your program below to pay via M-Pesa, Tigo Pesa, Airtel Money, or Credit Card.</p>
-            
-            <div id="payment-status-box" class="status-box hidden"></div>
-
-            <form id="bungufx-payment-form">
-                <input type="text" id="student-name" placeholder="Your Full Name" required>
-                <input type="email" id="student-email" placeholder="Email Address" required>
-                <input type="tel" id="student-phone" placeholder="Phone Number (e.g., 255712345678)" required>
-                
-                <select id="course-selection" required>
-                    <option value="">Select Preferred Program</option>
-                    <option value="beginner" data-amount="135000">Beginner Course (TSh 135,000 / $50)</option>
-                    <option value="advanced" data-amount="270000">Advanced Mentorship (TSh 270,000 / $100)</option>
-                    <option value="vip" data-amount="540000">VIP Signals + Mentorship (TSh 540,000 / $200)</option>
-                </select>
-
-                <div class="payment-icons">
-                    <span>💳 Credit Card</span> | <span>📱 Mobile Money (M-Pesa, Tigo Pesa, Airtel)</span>
-                </div>
-
-                <button type="submit" class="btn btn-submit" id="pay-button">Proceed to Secure Payment</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- INTEGRATION JAVASCRIPT LAYER -->
-    <script src="payment-handler.js"></script>document.getElementById('bungufx-payment-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // 1. Gather all student input data
-    const name = document.getElementById('student-name').value;
-    const email = document.getElementById('student-email').value;
-    const phone = document.getElementById('student-phone').value;
-    const courseSelect = document.getElementById('course-selection');
-    const selectedCourse = courseSelect.value;
-    const amountTsh = courseSelect.options[courseSelect.selectedIndex].getAttribute('data-amount');
-
-    const statusBox = document.getElementById('payment-status-box');
-    const payButton = document.getElementById('pay-button');
-
-    // 2. Visual feedback interface rules
-    payButton.innerText = "Initializing Secure Checkout...";
-    payButton.disabled = true;
-    statusBox.classList.remove('hidden');
-    statusBox.className = "status-box processing";
-    statusBox.innerText = "Connecting to M-Pesa / Tigo Pesa / Card Networks...";
-
-    // 3. Payload configuration packaging for payment merchant API (e.g., Pesapal / DPO)
-    const transactionPayload = {
-        merchant_reference: "BUNGUFX-" + Date.now(),
-        amount: amountTsh,
-        currency: "TZS",
-        description: "BUNGU FX Enrollment: " + selectedCourse,
-        customer_first_name: name.split(' ')[0] || "Student",
-        customer_last_name: name.split(' ')[1] || "BunguFX",
-        customer_email: email,
-        customer_phone: phone,
-        redirect_url: window.location.origin + "/payment-success.html"
-    };
-
-    /* 
-       4. BACKEND GATEWAY COMMUNICATION
-       In production, you route this through your backend (PHP/Node.js) 
-       to safely keep your Private API Keys hidden from the public.
-    */
-    fetch('https://bungufx.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(transactionPayload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if(data.redirect_checkout_url) {
-            // Success: Send student to the gateway checkout page to enter their M-Pesa PIN or Card details
-            window.location.href = data.redirect_checkout_url;
-        } else {
-            throw new Error("Invalid API initialization response from gateway.");
+    <style>
+        /* CORE MODERN THEME ARCHITECTURE */
+        :root {
+            --bg-deep: #0a0d14;
+            --bg-surface: #121722;
+            --gold: #ffcc00;
+            --gold-glow: rgba(255, 204, 0, 0.2);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --neon-green: #00ffcc;
         }
-    })
-    .catch(error => {
-        // Fallback error handling if network or keys fail
-        payButton.innerText = "Proceed to Secure Payment";
-        payButton.disabled = false;
-        statusBox.className = "status-box error";
-        statusBox.innerText = "Payment Gateway connection timed out. Please contact BUNGU FX Support via WhatsApp.";
-        console.error("Gateway error details: ", error);
-    });
-});
-/* PAYMENT HANDLER STYLING ARCHITECTURE */
-.payment-icons {
-    margin: 10px 0 20px 0;
-    font-size: 14px;
-    color: #ffcc00;
-    font-weight: 600;
-}
 
-.status-box {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    font-weight: 600;
-    text-align: center;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-.status-box.processing {
-    background-color: #332a00;
-    border: 1px solid #ffcc00;
-    color: #ffcc00;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-.status-box.error {
-    background-color: #3d1111;
-    border: 1px solid #ff3333;
-    color: #ff3333;
-}
+        /* HIGH CLASS LIVE ABSTRACT ANIMATED BACKGROUND GRID */
+        .premium-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 50% 50%, #161f33 0%, #0a0d14 100%);
+        }
 
-.hidden {
-    display: none !important;
-}
+        .chart-grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            background-image: 
+                linear-gradient(to right, #ffffff 1px, transparent 1px),
+                linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
 
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
 
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: rgba(18, 23, 34, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--gold);
+            text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 0 60px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-glow-point {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            filter: blur(150px);
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 54px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff 60%, #ffcc00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ffcc00 0%, #e6b800 100%);
+            color: #000000;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(255, 204, 0, 0.3);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 204, 0, 0.5);
+        }
+
+        /* LIVE ADVANCED FINANCIAL GRAPHIC (INTEGRATED CHART WIDGET) */
+        .live-chart-container {
+            margin: 40px auto 60px auto;
+            background: var(--bg-surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            height: 450px;
+        }
+
+        /* ACADEMY CARDS ARCHITECTURE */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, #121722 0%, #171e2c 100%);
+            padding: 40px 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 35px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* PROGRAMS GRID WITH HOVER RANGES */
+        .courses-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .course-box {
+            background-color: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .course-box.premium-tier {
+            border: 2px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.15);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            padding: 4px 15px;
+            font-size: 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .course-box h4 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .course-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .course-box .price {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* REGISTRATION & SECURE GATEWAY CHECKOUT */
+        .checkout-section {
+            background-color: var(--bg-surface);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 0;
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .form-container p {
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 18px;
+            background-color: var(--bg-deep);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        form input:focus, form select:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+        }
+
+        .payment-methods-logos {
+            background: var(--bg-deep);
+            border: 1px dashed rgba(255, 254, 254, 0.15);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: var(--neon-green);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .status-box {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
