@@ -1,400 +1,478 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BUNGU FX PRO</title>
-
-<style>
-body {
-  margin:0;
-  font-family: Arial;
-  background:#0b1220;
-  color:white;
-}
-
-/* LOGIN SCREEN */
-#auth {
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#0b1220;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-}
-
-input {
-  padding:10px;
-  margin:5px;
-  width:200px;
-}
-
-button {
-  padding:10px;
-  background:#22c55e;
-  border:none;
-  color:white;
-  cursor:pointer;
-}
-
-/* APP */
-#app {
-  display:none;
-}
-
-/* NAV */
-.nav {
-  background:#111827;
-  padding:15px;
-  text-align:center;
-  font-weight:bold;
-}
-
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-  padding:10px;
-}
-
-.card {
-  background:#1f2937;
-  padding:10px;
-  border-radius:10px;
-}
-
-/* CHAT */
-.chat {
-  margin:10px;
-  background:#111827;
-  padding:10px;
-  border-radius:10px;
-  height:250px;
-  display:flex;
-  flex-direction:column;
-}
-
-.messages {
-  flex:1;
-  overflow-y:auto;
-}
-
-.msg {
-  background:#2563eb;
-  padding:5px;
-  margin:5px 0;
-  border-radius:5px;
-  width:fit-content;
-}
-
-.chat input {
-  width:70%;
-}
-
-.chat button {
-  width:25%;
-}
-
-/* WHATSAPP */
-.wa {
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  background:#25D366;
-  padding:12px;
-  border-radius:50px;
-  color:white;
-  text-decoration:none;
-}
-
-@media(max-width:768px){
-  .grid{grid-template-columns:1fr;}
-}
-</style>
-</head>
-
-<body>
-
-<!-- LOGIN -->
-<div id="auth">
-  <h2>BUNGU FX LOGIN</h2>
-  <input id="user" placeholder="Username">
-  <input id="pass" type="password" placeholder="Password">
-  <button onclick="login()">Login / Register</button>
-</div>
-
-<!-- APP -->
-<div id="app">
-
-<div class="nav">💎 BUNGU FX PRO TRADING</div>
-
-<div class="grid" id="signals">
-  <div class="card">Loading signals...</div>
-</div>
-
-<div class="chat">
-  <h3>Live Chat 💬</h3>
-  <div class="messages" id="chatBox"></div>
-
-  <div style="display:flex;">
-    <input id="msg" placeholder="message">
-    <button onclick="send()">Send</button>
-  </div>
-</div>
-
-</div>
-
-<a class="wa" href="https://wa.me/255798033596">WhatsApp</a>
-
-<script>
-
-/* LOGIN SYSTEM (LOCAL) */
-function login(){
-  let u = document.getElementById("user").value;
-  let p = document.getElementById("pass").value;
-
-  if(u && p){
-    localStorage.setItem("user", u);
-    document.getElementById("auth").style.display="none";
-    document.getElementById("app").style.display="block";
-    loadSignals();
-  }
-}
-
-/* CHAT SYSTEM (LOCAL REALTIME SIMULATION) */
-function send(){
-  let msg = document.getElementById("msg").value;
-  if(!msg) return;
-
-  let box = document.getElementById("chatBox");
-
-  let div = document.createElement("div");
-  div.className="msg";
-  div.innerText = localStorage.getItem("user")+": "+msg;
-
-  box.appendChild(div);
-  document.getElementById("msg").value="";
-}
-
-/* FOREX API */
-function loadSignals(){
-  fetch("https://api.exchangerate.host/latest")
-  .then(res=>res.json())
-  .then(data=>{
-
-    let grid = document.getElementById("signals");
-    grid.innerHTML="";
-
-    grid.innerHTML += `
-      <div class="card">
-        EUR/USD: ${data.rates.USD}
-      </div>
-      <div class="card">
-        GBP/USD: ${data.rates.GBP}
-      </div>
-      <div class="card">
-        XAU/USD: LIVE FX DATA
-      </div>
-    `;
-  });
-}
-
-</script>
-
-</body><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUNGU FX Market Insights: GBP/JPY H4 Analysis</title>
-    <!-- Bootstrap 5 CSS for Modern Styling -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-        }
-        .analysis-container {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            padding: 40px;
-            margin-top: 30px;
-            margin-bottom: 50px;
-        }
-        h1 {
-            color: #0d6efd;
-            font-weight: 700;
-            border-bottom: 3px solid #0d6efd;
-            padding-bottom: 15px;
-        }
-        h2 {
-            color: #212529;
-            font-weight: 600;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .level-badge {
-            font-size: 0.95rem;
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-        .setup-card {
-            border-left: 5px solid;
-            padding: 20px;
-            background-color: #fdfdfd;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .setup-buy { border-left-color: #198754; }
-        .setup-sell { border-left-color: #dc3545; }
-        .disclaimer-box {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px;
-            font-size: 0.9rem;
-            color: #664d03;
-        }
-    </style>
+    <title>BUNGU FX | Forex Trading Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Clean and modern font from Google Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-9 analysis-container">
-            
-            <!-- main Title -->
-            <h1 class="text-uppercase mb-4">BUNGU FX Market Insights: GBP/JPY H4 Analysis</h1>
-            
-            <!-- Market Overview -->
-            <section class="mb-4">
-                <h2>Market Overview</h2>
-                <p class="lead text-muted">
-                    The GBP/JPY currency pair on the 4-hour (H4) timeframe is currently experiencing a critical consolidation phase after a major bearish correction. 
-                    Following a steep decline from its June highs near the <strong>215.400</strong> resistance level, the price found support around the <strong>212.460</strong> zone. 
-                    Currently, the market is trading at <strong>213.568</strong>, testing a vital near-term resistance structure.
-                </p>
-            </section>
-
-            <hr>
-
-            <!-- Fundamental Catalysts -->
-            <section class="mb-4">
-                <h2>Fundamental Catalysts Affecting GBP/JPY</h2>
-                <p>To trade this pair effectively, technical setups must be aligned with recent macroeconomic developments from the UK and Japan:</p>
+    <!-- NAVIGATION HEADER -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">BUNGU <span>FX</span></div>
+            <nav>
                 <ul>
-                    <li class="mb-2">
-                        <strong>Bank of England (BoE) Hawkish Hold:</strong> The Bank of England voted 7–2 to hold its benchmark interest rate at 3.75%. Crucially, two policymakers broke consensus to vote for an immediate rate hike to 4%. This surprise hawkish tilt stems from sticky UK CPI inflation data resting at 2.8%, which provides strong structural support for the British Pound (GBP).
-                    </li>
-                    <li class="mb-2">
-                        <strong>Bank of Japan (BoJ) Historical Tightening:</strong> Moving aggressively to combat inflation fueled by volatile global energy prices, the Bank of Japan hiked its policy interest rate by 25 basis points to 1.00%—its highest level since 1995. The BoJ's official summary notes a clear intent to continue normalizing rates toward a 2% neutral target. This aggressive hawkish shift from Tokyo is generating the strong bearish corrections seen on the chart as capital flows back into the Japanese Yen (JPY).
-                    </li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Join Academy</a></li>
                 </ul>
-            </section>
-
-            <hr>
-
-            <!-- Technical Levels -->
-            <section class="mb-4">
-                <h2>Key Technical Levels</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <span class="badge bg-danger level-badge w-100 text-start">Major Resistance: 215.400 (Recent swing high)</span>
-                        <span class="badge bg-warning text-dark level-badge w-100 text-start">Immediate Resistance: 213.600 – 213.700 (Green line)</span>
-                    </div>
-                    <div class="col-md-6">
-                        <span class="badge bg-info text-dark level-badge w-100 text-start">Immediate Support: 212.850 (Recent higher low)</span>
-                        <span class="badge bg-success level-badge w-100 text-start">Major Support: 212.460 (Strong demand zone)</span>
-                    </div>
-                </div>
-            </section>
-
-            <hr>
-
-            <!-- Trading Scenarios -->
-            <section class="mb-4">
-                <h2>Trading Scenarios & Precise Execution Specs</h2>
-                <p>We utilize a preferred <strong>Minimum Risk-to-Reward Ratio (R:R) of 1:2</strong> for these structural setups. This ensures long-term profitability even with a balanced win-rate.</p>
-                
-                <!-- Buy Setup -->
-                <div class="setup-card setup-buy mb-4">
-                    <h4 class="text-success font-weight-bold">Scenario A: The Bullish Breakout (Buy Setup)</h4>
-                    <p class="mb-1"><strong>Trigger:</strong> Clear 4-hour candle close above the 213.600 resistance line, followed by a successful retest.</p>
-                    <p class="mb-1"><strong>Stop-Loss Placement:</strong> Position your Stop-Loss at <span class="badge bg-secondary">212.950</span> (safely below the immediate higher-low structure to protect against market noise).</p>
-                    <p class="mb-0"><strong>Take-Profit Targets:</strong></p>
-                    <ul>
-                        <li><strong>TP1:</strong> 214.800 (1:2 R:R achieved)</li>
-                        <li><strong>TP2:</strong> 215.400 (Major swing high / 1:2.7 R:R)</li>
-                    </ul>
-                </div>
-
-                <!-- Sell Setup -->
-                <div class="setup-card setup-sell">
-                    <h4 class="text-danger font-weight-bold">Scenario B: The Bearish Rejection (Sell Setup)</h4>
-                    <p class="mb-1"><strong>Trigger:</strong> A bearish reversal pattern (e.g., Shooting Star or Bearish Engulfing) failing to break past 213.600.</p>
-                    <p class="mb-1"><strong>Stop-Loss Placement:</strong> Position your Stop-Loss at <span class="badge bg-secondary">214.250</span> (just above the local technical swing high structure).</p>
-                    <p class="mb-0"><strong>Take-Profit Targets:</strong></p>
-                    <ul>
-                        <li><strong>TP1:</strong> 212.850 (1:2 R:R achieved)</li>
-                        <li><strong>TP2:</strong> 212.460 (Major daily support / 1:2.6 R:R)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <hr>
-
-            <!-- Data Summary Table -->
-            <section class="mb-4">
-                <h2>Key Structural Comparison</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped align-middle">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Metric / Level</th>
-                                <th>Bullish Buy Setup</th>
-                                <th>Bearish Sell Setup</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <strong><td>Invalidation (Stop-Loss)</td></strong>
-                                <td><span class="text-danger font-weight-bold">212.950</span> (Below structure)</td>
-                                <td><span class="text-danger font-weight-bold">214.250</span> (Above highs)</td>
-                            </tr>
-                            <tr>
-                                <strong><td>Primary Target (TP1)</td></strong>
-                                <td><span class="text-success font-weight-bold">214.800</span></td>
-                                <td><span class="text-success font-weight-bold">212.850</span></td>
-                            </tr>
-                            <tr>
-                                <strong><td>Target Risk-to-Reward</td></strong>
-                                <td>1:2 Minimum</td>
-                                <td>1:2 Minimum</td>
-                            </tr>
-                            <tr>
-                                <strong><td>Fundamental Bias</td></strong>
-                                <td>Sticky UK Inflation (2.8%)</td>
-                                <td>BoJ Hikes to 31-year Highs</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- Disclaimer -->
-            <div class="disclaimer-box mt-4">
-                <strong>BUNGU FX Risk Disclaimer:</strong> Forex trading carries a high level of risk to your capital. Always verify entry triggers on lower timeframes (e.g., M15 or H1) before executing positions based on H4 macro structures.
-            </div>
-
+            </nav>
         </div>
-    </div>
-</div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Master the Forex Market with BUNGU FX</h1>
+            <p>Learn advanced Price Action strategies, institutional trading secrets, and professional risk management from elite mentors.</p>
+            <a href="#contact" class="btn">Start Learning Now</a>
+        </div>
+    </section>
+
+    <!-- KEY FEATURES SECTION -->
+    <section id="features" class="features container">
+        <div class="feature-card">
+            <h3>Elite Mentorship</h3>
+            <p>Get step-by-step guidance through interactive practical sessions until you achieve market consistency.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Pure Price Action</h3>
+            <p>Master clean chart reading without lagging indicators. Decode the market like major financial institutions.</p>
+        </div>
+        <div class="feature-card">
+            <h3>High-Accuracy Signals</h3>
+            <p>Our students gain exclusive access to daily, premium institutional market setups and setups tracking.</p>
+        </div>
+    </section>
+
+    <!-- ACADEMY COURSES SECTION -->
+    <section id="courses" class="courses container">
+        <h2 class="section-title">Our Training Programs</h2>
+        <div class="course-grid">
+            <div class="course-box">
+                <h4>Beginner Course</h4>
+                <p>Forex fundamentals, understanding pips, lot sizes, margins, and navigating MetaTrader 4 & 5.</p>
+                <span class="price">$50 / TSh 135,000</span>
+            </div>
+            <div class="course-box bg-gold">
+                <h4>Advanced Mentorship</h4>
+                <p>Liquidity concepts, institutional order blocks, market imbalances, and psychological mastery.</p>
+                <span class="price">$100 / TSh 270,000</span>
+            </div>
+            <div class="course-box">
+                <h4>VIP Signals + Mentorship</h4>
+                <p>Receive intensive personalized mentorship alongside full access to our VIP signal room for 3 months.</p>
+                <span class="price">$200 / TSh 540,000</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION / CONTACT FORM -->
+    <section id="contact" class="contact-section">
+        <div class="container form-container">
+            <h2>Create Your Academy Account</h2>
+            <p>Fill out the application form below. The BUNGU FX support team will review and reach out immediately.</p>
+            <form action="#" method="POST">
+                <input type="text" placeholder="Your Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number (WhatsApp)" required>
+                <select required>
+                    <option value="">Select Preferred Program</option>
+                    <option value="beginner">Beginner Course ($50)</option>
+                    <option value="advanced">Advanced Mentorship ($100)</option>
+                    <option value="vip">VIP Signals + Mentorship ($200)</option>
+                </select>
+                <button type="submit" class="btn btn-submit">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 BUNGU FX Academy. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
-</html>
+</html>/* RESET & FOUNDATION */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-</html>
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #11141a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+/* NAVBAR & LOGO */
+header {
+    background-color: #1a1f29;
+    padding: 20px 0;
+    border-bottom: 2px solid #ffcc00;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #ffcc00;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://unsplash.com') no-repeat center center/cover;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #cccccc;
+}
+
+.btn {
+    background-color: #ffcc00;
+    color: #11141a;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #e6b800;
+    transform: translateY(-3px);
+}
+
+/* CARDS ABOVE BACKGROUND */
+.features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #1a1f29;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    flex: 1;
+    border-top: 4px solid #ffcc00;
+    text-align: center;
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+/* COURSES GRID */
+.courses {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+}
+
+.course-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.course-box {
+    background-color: #1a1f29;
+    padding: 30px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    border: 1px solid #2a313d;
+}
+
+.bg-gold {
+    border: 2px solid #ffcc00;
+}
+
+.course-box h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.course-box .price {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+/* FORMS */
+.contact-section {
+    background-color: #1a1f29;
+    padding: 60px 0;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.form-container p {
+    margin-bottom: 30px;
+    color: #cccccc;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #11141a;
+    border: 1px solid #2a313d;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input:focus, form select:focus {
+    border-color: #ffcc00;
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    font-size: 18px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #0b0d11;
+    padding: 25px 0;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #666;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* RESPONSIVE LAYOUT (SMARTPHONES) */
+@media (max-width: 768px) {
+    .header-flex, .features, .course-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul {
+        margin-top: 15px;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    .features {
+        margin-top: 20px;
+    }
+    .hero-content h1 {
+        font-size: 32px;
+    }
+}    <!-- REGISTRATION & INTEGRATED PAYMENT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="container form-container">
+            <h2>Create Your Account & Pay Securely</h2>
+            <p>Select your program below to pay via M-Pesa, Tigo Pesa, Airtel Money, or Credit Card.</p>
+            
+            <div id="payment-status-box" class="status-box hidden"></div>
+
+            <form id="bungufx-payment-form">
+                <input type="text" id="student-name" placeholder="Your Full Name" required>
+                <input type="email" id="student-email" placeholder="Email Address" required>
+                <input type="tel" id="student-phone" placeholder="Phone Number (e.g., 255712345678)" required>
+                
+                <select id="course-selection" required>
+                    <option value="">Select Preferred Program</option>
+                    <option value="beginner" data-amount="135000">Beginner Course (TSh 135,000 / $50)</option>
+                    <option value="advanced" data-amount="270000">Advanced Mentorship (TSh 270,000 / $100)</option>
+                    <option value="vip" data-amount="540000">VIP Signals + Mentorship (TSh 540,000 / $200)</option>
+                </select>
+
+                <div class="payment-icons">
+                    <span>💳 Credit Card</span> | <span>📱 Mobile Money (M-Pesa, Tigo Pesa, Airtel)</span>
+                </div>
+
+                <button type="submit" class="btn btn-submit" id="pay-button">Proceed to Secure Payment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- INTEGRATION JAVASCRIPT LAYER -->
+    <script src="payment-handler.js"></script>document.getElementById('bungufx-payment-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // 1. Gather all student input data
+    const name = document.getElementById('student-name').value;
+    const email = document.getElementById('student-email').value;
+    const phone = document.getElementById('student-phone').value;
+    const courseSelect = document.getElementById('course-selection');
+    const selectedCourse = courseSelect.value;
+    const amountTsh = courseSelect.options[courseSelect.selectedIndex].getAttribute('data-amount');
+
+    const statusBox = document.getElementById('payment-status-box');
+    const payButton = document.getElementById('pay-button');
+
+    // 2. Visual feedback interface rules
+    payButton.innerText = "Initializing Secure Checkout...";
+    payButton.disabled = true;
+    statusBox.classList.remove('hidden');
+    statusBox.className = "status-box processing";
+    statusBox.innerText = "Connecting to M-Pesa / Tigo Pesa / Card Networks...";
+
+    // 3. Payload configuration packaging for payment merchant API (e.g., Pesapal / DPO)
+    const transactionPayload = {
+        merchant_reference: "BUNGUFX-" + Date.now(),
+        amount: amountTsh,
+        currency: "TZS",
+        description: "BUNGU FX Enrollment: " + selectedCourse,
+        customer_first_name: name.split(' ')[0] || "Student",
+        customer_last_name: name.split(' ')[1] || "BunguFX",
+        customer_email: email,
+        customer_phone: phone,
+        redirect_url: window.location.origin + "/payment-success.html"
+    };
+
+    /* 
+       4. BACKEND GATEWAY COMMUNICATION
+       In production, you route this through your backend (PHP/Node.js) 
+       to safely keep your Private API Keys hidden from the public.
+    */
+    fetch('https://bungufx.com', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(transactionPayload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.redirect_checkout_url) {
+            // Success: Send student to the gateway checkout page to enter their M-Pesa PIN or Card details
+            window.location.href = data.redirect_checkout_url;
+        } else {
+            throw new Error("Invalid API initialization response from gateway.");
+        }
+    })
+    .catch(error => {
+        // Fallback error handling if network or keys fail
+        payButton.innerText = "Proceed to Secure Payment";
+        payButton.disabled = false;
+        statusBox.className = "status-box error";
+        statusBox.innerText = "Payment Gateway connection timed out. Please contact BUNGU FX Support via WhatsApp.";
+        console.error("Gateway error details: ", error);
+    });
+});
+/* PAYMENT HANDLER STYLING ARCHITECTURE */
+.payment-icons {
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+.status-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-box.processing {
+    background-color: #332a00;
+    border: 1px solid #ffcc00;
+    color: #ffcc00;
+}
+
+.status-box.error {
+    background-color: #3d1111;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
